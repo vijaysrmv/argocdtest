@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docuploadservice
+  labels:
+    app: docuploadservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: docuploadservice
+  template:
+    metadata:
+      labels:
+        app: docuploadservice
+    spec:
+      containers:
+      - name: dockuploadservice
+        image: vijaysrmv/dockuploadservice:v1
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ODUPLOADSERVICE_URL
+          value: https://nsgsolutiondemo.newgensoftware.net/OmniDocsRestWS/rest/services/addDocumentJSON
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "250m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"

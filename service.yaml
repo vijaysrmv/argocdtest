@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: dockuploadservice
+spec:
+  selector:
+    app: docuploadservice
+  type: ClusterIP
+  ports:
+  - name:  dockuploadservice
+    port:  8082
+    targetPort:  8080
